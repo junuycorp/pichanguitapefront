@@ -1,0 +1,482 @@
+/* src/pages/admin/UserManagement.css */
+
+.user-management-container {
+    background-color: var(--color-surface);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+.user-management-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.user-management-header h2 {
+    font-size: 1.75rem;
+    color: var(--color-primary-dark);
+}
+
+.add-user-button {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.add-user-button:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+/* --- Filtros y Búsqueda --- */
+.filter-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+}
+
+.search-input,
+.profile-filter-select {
+    flex-grow: 1; /* Permite que los inputs ocupen el espacio disponible */
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--color-text);
+    background-color: var(--color-surface-alt);
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    min-width: 150px; /* Ancho mínimo para que no se hagan demasiado pequeños */
+}
+
+.search-input:focus,
+.profile-filter-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.profile-filter-select {
+    /* Estilo para la flecha del select */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236c757d%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-6.5H18.6c-5.1%200-9.6%202.3-13.2%206.5-3.6%204.2-5.4%209.6-5.4%2015.3v68.5c0%205.8%201.8%2011.1%205.4%2015.3%203.6%204.2%208.1%206.5%2013.2%206.5h255.2c5.1%200%209.6-2.3%2013.2-6.5%203.6-4.2%205.4-9.6%205.4-15.3V84.7c0-5.8-1.8-11.1-5.4-15.3z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.65em auto, 100%;
+    padding-right: 2.5em; /* Espacio para el icono */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+/* Dark mode select arrow */
+[data-theme='dark'] .profile-filter-select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ced4da%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-6.5H18.6c-5.1%200-9.6%202.3-13.2%206.5-3.6%204.2-5.4%209.6-5.4%2015.3v68.5c0%205.8%201.8%2011.1%205.4%2015.3%203.6%204.2%208.1%206.5%2013.2%206.5h255.2c5.1%200%209.6-2.3%2013.2-6.5%203.6-4.2%205.4-9.6%205.4-15.3V84.7c0-5.8-1.8-11.1-5.4-15.3z%22%2F%3E%3C%2Fsvg%3E');
+}
+
+/* --- Tabla de Usuarios --- */
+.user-table-container {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
+table th {
+    background-color: var(--color-surface-alt);
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+.table-row-clickable {
+    cursor: pointer; /* Indica que la fila es clickeable */
+}
+
+table tbody tr:hover {
+    background-color: var(--color-surface-alt);
+}
+
+/* --- Botones de Acción (Iconos) --- */
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem; /* Tamaño del icono */
+    padding: 0.4rem;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    margin-right: 5px;
+    color: var(--color-text-secondary); /* Color por defecto de los iconos */
+}
+
+.icon-button:hover {
+    transform: scale(1.1);
+}
+
+.view-button:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Azul claro */
+    color: #007bff; /* Color del icono al hacer hover */
+}
+
+.edit-button:hover {
+    background-color: rgba(255, 193, 7, 0.1); /* Amarillo claro */
+    color: #ffc107;
+}
+
+.delete-button:hover {
+    background-color: rgba(220, 53, 69, 0.1); /* Rojo claro */
+    color: #dc3545;
+}
+
+/* --- Badge de Estado --- */
+.status-badge {
+    padding: 0.3em 0.7em;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap; /* Evita que el texto se rompa */
+}
+
+.status-badge.active {
+    background-color: #d4edda; /* Verde claro */
+    color: #28a745; /* Verde oscuro */
+}
+[data-theme='dark'] .status-badge.active {
+    background-color: #1a512d;
+    color: #55f07a;
+}
+
+.status-badge.inactive {
+    background-color: #f8d7da; /* Rojo claro */
+    color: #dc3545; /* Rojo oscuro */
+}
+[data-theme='dark'] .status-badge.inactive {
+    background-color: #611b23;
+    color: #ff8591;
+}
+
+
+/* --- Modal Styles (para Crear/Editar) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1500;
+    animation: fadeInModal 0.3s forwards;
+}
+
+.modal-content {
+    background-color: var(--color-surface);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    animation: slideInModal 0.3s forwards;
+    position: relative;
+    max-height: 90vh; /* Limita la altura del modal */
+    overflow-y: auto; /* Permite scroll si el contenido es grande */
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInModal {
+    from { transform: translateY(-50px) scale(0.9); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.modal-content h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.modal-content .form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="password"],
+.modal-content select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    color: var(--color-text);
+    background-color: var(--color-surface-alt);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* Specific styling for select arrow in modals (if needed, otherwise uses .profile-filter-select) */
+.modal-content select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236c757d%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-6.5H18.6c-5.1%200-9.6%202.3-13.2%206.5-3.6%204.2-5.4%209.6-5.4%2015.3v68.5c0%205.8%201.8%2011.1%205.4%2015.3%203.6%204.2%208.1%206.5%2013.2%206.5h255.2c5.1%200%209.6-2.3%2013.2-6.5%203.6-4.2%205.4-9.6%205.4-15.3V84.7c0-5.8-1.8-11.1-5.4-15.3z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 0.65em auto, 100%;
+    padding-right: 2.5em;
+}
+[data-theme='dark'] .modal-content select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ced4da%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-6.5H18.6c-5.1%200-9.6%202.3-13.2%206.5-3.6%204.2-5.4%209.6-5.4%2015.3v68.5c0%205.8%201.8%2011.1%205.4%2015.3%203.6%204.2%208.1%206.5%2013.2%206.5h255.2c5.1%200%209.6-2.3%2013.2-6.5%203.6-4.2%205.4-9.6%205.4-15.3V84.7c0-5.8-1.8-11.1-5.4-15.3z%22%2F%3E%3C%2Fsvg%3E');
+}
+
+.modal-content .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.modal-content .checkbox-group input[type="checkbox"] {
+    width: auto; /* Ancho automático para checkboxes */
+    margin-right: 10px;
+    transform: scale(1.2); /* Hacer el checkbox un poco más grande */
+}
+
+.modal-content .checkbox-group label {
+    margin-bottom: 0; /* Eliminar margen inferior para alinear con checkbox */
+    display: flex; /* Para alinear el texto y el status-text */
+    align-items: center;
+    gap: 5px;
+}
+
+.modal-content .status-text.active {
+    color: #28a745; /* Verde para activo en el form */
+}
+[data-theme='dark'] .modal-content .status-text.active {
+    color: #55f07a;
+}
+.modal-content .status-text.inactive {
+    color: #dc3545; /* Rojo para inactivo en el form */
+}
+[data-theme='dark'] .modal-content .status-text.inactive {
+    color: #ff8591;
+}
+
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+
+.save-button, .cancel-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-button {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.save-button:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.cancel-button {
+    background-color: var(--color-border);
+    color: var(--color-text-secondary);
+}
+
+.cancel-button:hover {
+    background-color: var(--color-muted);
+}
+
+.error-message, .modal-error-message {
+    color: #dc3545;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* --- Modal de Ver Detalles --- */
+.view-modal {
+    padding: 2.5rem;
+}
+
+.user-details-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto */
+    gap: 1rem;
+    font-size: 1rem;
+    color: var(--color-text);
+}
+
+.user-details-grid p strong {
+    color: var(--color-primary-dark);
+    margin-right: 0.5rem;
+}
+
+
+
+/* --- Responsive Design para Tablas (Móvil) --- */
+@media (max-width: 768px) {
+    .filter-controls {
+        flex-direction: column; /* Apila los filtros en móvil */
+        gap: 0.8rem; /* Ajuste el espacio entre filtros */
+    }
+    .search-input,
+    .profile-filter-select {
+        width: 100%; /* Ocupa todo el ancho */
+        max-width: none;
+    }
+
+    /* OCULTAR SOLO EL ENCABEZADO DE EMAIL EN MÓVIL */
+    table th:nth-of-type(2), /* Encabezado de Email */
+    table td:nth-of-type(2) { /* Celda de Email */
+        display: none;
+    }
+
+    table thead {
+        display: none; /* Oculta todos los encabezados en móvil */
+    }
+    table, table tbody, table tr, table td {
+        display: block; /* Hace que las filas y celdas se comporten como bloques */
+        width: 100%;
+    }
+    table tr {
+        margin-bottom: 1rem;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        display: flex; /* Usar flexbox para mejor control del contenido */
+        flex-wrap: wrap; /* Permite que las celdas se envuelvan */
+    }
+    table td {
+        /* Reset de propiedades para flexbox */
+        text-align: left; /* Alinea el contenido a la izquierda por defecto */
+        padding-left: 15px; /* Padding izquierdo normal, el label será un elemento hermano */
+        position: static; /* Quitar el posicionamiento absoluto para el pseudo-elemento */
+        flex: 1 1 100%; /* Cada celda ocupa una fila completa */
+        box-sizing: border-box; /* Asegura que padding se incluya en el ancho */
+        padding-top: 8px; /* Espacio superior para el label */
+        padding-bottom: 8px;
+    }
+
+    /* Cada celda tendrá un pseudo-elemento para el label, pero lo haremos como un SPAN dentro */
+    /* EN LUGAR DE PSEUDO-ELEMENTOS, VAMOS A INYECTAR EL LABEL EN EL JSX PARA UN CONTROL MÁS FINO */
+    /* Para esto, necesitamos un pequeño cambio en UserManagement.tsx también */
+
+    /* AJUSTE PARA LAS CELDAS DE ACCIONES ESPECÍFICAMENTE */
+    table td:nth-of-type(4) { /* Esta es la celda de Acciones (después de Usuario, Perfil, Estado, Email oculto) */
+        display: flex; /* Para que los botones se alineen horizontalmente */
+        justify-content: flex-start; /* Alinea los botones al inicio */
+        align-items: center;
+        padding-top: 15px; /* Más espacio arriba para las acciones */
+        padding-bottom: 15px;
+        border-top: 1px solid var(--color-border); /* Separador visual */
+        width: 100%; /* Asegurar que ocupe todo el ancho */
+    }
+    
+    /* Mostrar data-label si aún se desea, pero con ajustes */
+    /* Como vamos a inyectar el label en el JSX, esta parte se simplifica en CSS */
+    /* table td::before { ... } ya no sería necesario para los labels */
+
+    .modal-content {
+        padding: 1.5rem;
+    }
+    .modal-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    .save-button, .cancel-button {
+        width: 100%; /* Botones ocupan todo el ancho */
+    }
+
+    /* Ajuste para el grid de detalles del usuario en el modal de vista */
+    .user-details-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil para el modal de vista */
+        gap: 0.8rem;
+    }
+    .user-details-grid p {
+        padding: 0.5rem 0; /* Espacio para cada detalle */
+        border-bottom: 1px solid var(--color-border);
+    }
+    .user-details-grid p:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Nuevo CSS para mobile-label y action-buttons-wrapper */
+@media (max-width: 768px) {
+    .mobile-label {
+        display: block; /* Hace que el label ocupe su propia línea */
+        font-weight: bold;
+        color: var(--color-primary-dark); /* Un color que destaque */
+        margin-bottom: 0.3rem; /* Espacio entre el label y el valor */
+        font-size: 0.9em; /* Un poco más pequeño */
+    }
+
+    .action-buttons-wrapper {
+        display: flex;
+        gap: 5px; /* Espacio entre los botones */
+        justify-content: flex-start; /* Alinea los botones a la izquierda */
+        flex-wrap: wrap; /* Por si hay muchos botones */
+        width: 100%; /* Ocupa todo el ancho disponible en la celda */
+    }
+}

@@ -1,0 +1,11 @@
+/* src/pages/MainCliente.css */
+
+/* Estilo específico para el badge del cliente */
+.client-panel .client-badge {
+    background-color: #007bff; /* Un azul para el badge del cliente */
+    color: var(--color-surface); /* Texto blanco para contraste */
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+}
+
+/* Si hay un layout o componente único para el cliente que no se comparte */

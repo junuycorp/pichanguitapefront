@@ -1,0 +1,22 @@
+/* src/App.css */
+
+/* Importa los estilos comunes que se aplican a toda la aplicación */
+@import url('./styles/common.css');
+
+/* Estilos globales para body y html */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif; /* Asegúrate de que esta fuente esté importada en tu index.html o un CDN */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-surface-alt); /* Utiliza la variable definida en common.css */
+    color: var(--color-text); /* Utiliza la variable definida en common.css */
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Puedes añadir aquí otros estilos que sean específicos de App.jsx o globales a la aplicación */
+/* Por ejemplo, estilos para el login page si no quieres que tenga su propio CSS completamente */

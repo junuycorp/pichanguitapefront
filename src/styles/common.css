@@ -1,0 +1,343 @@
+/* src/styles/common.css */
+
+/* Variables de Tema */
+:root {
+    /* Colores base */
+    --color-primary: #12913c; /* Verde principal para Admin */
+    --color-primary-dark: #08692a;
+    --color-accent: #0d253f; /* Azul oscuro genérico, puedes cambiarlo */
+    
+    /* Colores neutrales */
+    --color-surface: #ffffff; /* Fondo de tarjetas, nav */
+    --color-surface-alt: #f5f7fa; /* Fondo general, hover states */
+    --color-text: #17202a; /* Texto principal */
+    --color-text-secondary: #4d5c6d; /* Texto secundario */
+    --color-border: #e2e8f0; /* Bordes */
+    --color-muted: #adb5bd; /* Texto más suave */
+    --color-shadow: rgba(18, 145, 60, 0.08); /* Sombra ligera */
+    --color-shadow-hover: rgba(18, 145, 60, 0.13); /* Sombra en hover */
+}
+
+/* Tema Oscuro */
+[data-theme='dark'] {
+    --color-primary: #26d96d;
+    --color-primary-dark: #12913c;
+    --color-accent: #7cdfff;
+    --color-surface: #192734;
+    --color-surface-alt: #101820;
+    --color-text: #f5f7fa;
+    --color-text-secondary: #b8c1ce;
+    --color-border: #223046;
+    --color-muted: #6d7a8c;
+    --color-shadow: rgba(0, 0, 0, 0.4);
+    --color-shadow-hover: rgba(0, 0, 0, 0.5);
+}
+
+/* Animación para el cambio de tema */
+html.theme-animating {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* --- Estilos Comunes de Paneles --- */
+.admin-panel,
+.owner-panel,
+.client-panel { /* Agregamos client-panel para futura consistencia */
+    background-color: var(--color-surface-alt);
+    min-height: 100vh;
+}
+
+.main-content {
+    padding: 2rem;
+    max-width: 1400px; /* Asegura que el contenido no se extienda demasiado en pantallas grandes */
+    margin: 0 auto; /* Centra el contenido */
+}
+
+.role-section {
+    background-color: var(--color-surface);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+.role-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.role-badge {
+    background-color: var(--color-primary); /* Color por defecto, sobrescribir en específicos */
+    color: var(--color-surface);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap; /* Evita que el texto del badge se rompa */
+}
+
+.role-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background-color: var(--color-surface-alt);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid var(--color-border);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-primary-dark);
+}
+
+/* --- Header --- */
+.header-minimal {
+    background: linear-gradient(120deg, var(--color-primary-dark), var(--color-primary) 85%);
+    color: var(--color-surface);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px var(--color-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1100; /* Header siempre visible */
+}
+
+.header-minimal .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-minimal .theme-toggle {
+    background: none;
+    border: 2px solid var(--color-surface);
+    color: var(--color-surface);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.header-minimal .theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilo para el botón de salir */
+.header-minimal .logout-button {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--color-surface); /* Borde blanco para contraste */
+    color: var(--color-surface);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.header-minimal .logout-button:hover {
+    background-color: var(--color-surface);
+    color: var(--color-primary-dark);
+}
+
+
+/* --- Navegación Horizontal (Escritorio) --- */
+.nav-minimal {
+    background: var(--color-surface);
+    border-bottom: 1.5px solid var(--color-border);
+    box-shadow: 0 2px 5px var(--color-shadow);
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-list-minimal {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-item-dropdown {
+    position: relative;
+}
+
+.nav-link-minimal {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.nav-link-minimal:hover {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    background: var(--color-surface-alt);
+}
+
+/* Mostrar desplegable al pasar el mouse por encima del elemento padre (solo en web) */
+/* Se utiliza un media query para asegurar que solo aplique en pantallas grandes */
+@media (min-width: 769px) {
+    .nav-item-dropdown .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: var(--color-surface);
+        min-width: 240px;
+        box-shadow: 0px 8px 16px 0px var(--color-shadow);
+        z-index: 1050;
+        border-radius: 8px;
+        border: 1px solid var(--color-border);
+        padding: 0.5rem 0;
+        top: 100%;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    }
+
+    .nav-item-dropdown:hover .dropdown-content { /* Regla para mostrar con hover */
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-link {
+    color: var(--color-text);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.dropdown-link:hover {
+    background-color: var(--color-surface-alt);
+    color: var(--color-primary);
+}
+
+/* --- Menú de Hamburguesa (Móvil) --- */
+.hamburger-menu {
+    display: none; /* Oculto por defecto en escritorio */
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--color-surface);
+    background: none;
+    border: none;
+    padding: 0.5rem;
+}
+
+.menu-overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1200; /* Por encima de todo */
+}
+
+.menu-overlay.open {
+    display: block; /* Visible cuando tiene la clase 'open' */
+}
+
+.menu-vertical {
+    background: var(--color-surface);
+    width: 80%;
+    max-width: 300px;
+    padding: 1.5rem;
+    height: 100%;
+    overflow-y: auto;
+    animation: slideIn 0.3s forwards;
+    position: relative;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+}
+
+.menu-category-mobile {
+    margin-bottom: 1.5rem;
+}
+
+.category-title-mobile {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.menu-list-mobile {
+    list-style: none;
+}
+
+.menu-link-mobile {
+    display: block;
+    padding: 0.8rem 0.5rem;
+    color: var(--color-text);
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.menu-link-mobile:hover {
+    background-color: var(--color-surface-alt);
+    color: var(--color-primary-dark);
+}
+
+/* --- Media Queries para Responsividad (Comunes) --- */
+@media (max-width: 768px) {
+    .nav-minimal {
+        display: none; /* Oculta la barra de navegación de escritorio */
+    }
+    .hamburger-menu {
+        display: block; /* Muestra el botón de hamburguesa */
+    }
+    .header-minimal {
+        padding: 0.8rem 1.5rem;
+    }
+    .main-content {
+        padding: 1rem;
+    }
+}

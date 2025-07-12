@@ -1,0 +1,35 @@
+/* src/pages/MainAdmin.css */
+
+/* Aquí puedes poner estilos muy específicos para el panel de Admin */
+/* Por ejemplo, si el badge de admin tuviera un color diferente al primario por defecto */
+
+/* .admin-panel .role-badge {
+    background-color: var(--color-primary); // Ya es el default, pero si quisiera otro color
+    color: var(--color-surface);
+} */
+
+/* Si hay un layout o componente único para el admin que no se comparte */
+/* Estilos base del panel */
+.admin-panel {
+    background-color: var(--color-surface-alt);
+    min-height: 100vh;
+
+    
+}
+
+.main-content {
+    flex-grow: 1; /* Permite que el contenido principal ocupe el espacio restante */
+    padding: 2rem;
+   /* width: 95%; */
+    max-width: 1600px; /* NUEVO: Ancho máximo */
+    margin: 0 auto;   /* NUEVO: Centrar el contenido dentro del espacio disponible */
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho */
+    overflow-x: hidden; /* Evita scroll horizontal si el contenido es demasiado ancho */
+}
+
+/* El sidebar ya debe tener un ancho fijo o flex */
+.sidebar-minimal { /* Asumiendo esta es tu clase del sidebar */
+    width: 250px; /* Ejemplo, ajusta a tu ancho deseado */
+    flex-shrink: 0; /* Evita que el sidebar se encoja */
+    /* ... otros estilos del sidebar ... */
+}

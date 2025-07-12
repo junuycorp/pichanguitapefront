@@ -1,0 +1,258 @@
+/* src/pages/LoginPage.css */
+
+.login-page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--color-surface);
+}
+
+/* Sección del Formulario */
+.login-form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.login-card {
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    background-color: var(--color-surface-alt);
+}
+
+.login-logo img {
+    max-width: 80px;
+    margin-bottom: 1rem;
+    max-height: 80px;
+}
+
+.login-card h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-surface-alt);
+    color: var(--color-text);
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-dark-t);
+}
+
+.form-options {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+}
+
+.forgot-password {
+    font-size: 0.9rem;
+    color: var(--color-primary);
+}
+
+.btn-login {
+    width: 100%;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(120deg, var(--color-primary-dark), var(--color-primary));
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--color-shadow-hover);
+}
+
+.btn-login:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.separator {
+    margin: 1.5rem 0;
+    color: var(--color-text-secondary);
+}
+
+.btn-google {
+    width: 100%;
+    padding: 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.register-link {
+    margin-top: 2rem;
+    color: var(--color-text-secondary);
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Sección de la Imagen */
+.login-image-section {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-overlay h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .login-page-container {
+        grid-template-columns: 1fr;
+    }
+
+    .login-image-section {
+        display: none; /* Ocultamos la imagen en móvil para dar prioridad al form */
+    }
+    .login-subtitle {
+    display: none;
+  }
+
+    .login-form-section {
+        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/cancha_noche.jpeg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .login-card {
+        background-color: var(--color-surface);
+        border-radius: 12px;
+        box-shadow: 0 8px 24px var(--color-shadow); /* Sombra para profundidad */
+        padding: 40px; /* Padding interno de la tarjeta */
+        text-align: center;
+        max-width: 400px; /* Ancho máximo de la tarjeta */
+        width: 100%; /* La tarjeta ocupa el 100% del ancho disponible hasta max-width */
+        border: 1px solid var(--color-border); /* Borde sutil para la tarjeta */
+        animation: fadeIn 0.5s ease-out; /* Animación de entrada */
+    }
+}
+
+/* Estilo para los campos de texto y contraseña */
+.login-card input[type="text"],
+.login-card input[type="password"] {
+    width: 100%; /* Ocupa el 100% del ancho de su contenedor (form-group) */
+    padding: 12px 15px; /* Padding interno para el texto */
+    border: 1px solid var(--color-border); /* ¡Este es el borde que quieres ver! */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 1rem;
+    color: var(--color-text);
+    background-color: var(--color-surface-alt); /* Fondo del input */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Muy Importante: box-sizing */
+    /* Incluye padding y borde en el cálculo del ancho del 100% */
+    box-sizing: border-box;
+}
+
+.form-group input[type="date"] { /* <-- Asegúrate de que input[type="date"] esté aquí */
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--color-text); /* ¡Esto es clave para el color del texto y a veces el icono! */
+    background-color: var(--color-surface-alt);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    
+}
+
+.form-group input[type="date"] {
+    /* Forzar el color del texto en el input de fecha a ser el color de texto principal */
+    color: var(--color-text);
+   
+
+}
+
+/* Estilo para el botón de cambio de tema dentro del Login Card */
+.login-card .theme-toggle-login {
+    position: absolute;
+    top: 15px; /* Ajusta la posición vertical */
+    right: 15px; /* Ajusta la posición horizontal */
+    background: var(--color-surface-alt); /* Fondo que contraste con la tarjeta */
+    border: 1px solid var(--color-border);
+    color: var(--color-text); /* Color del icono */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+}
+
+.login-card .theme-toggle-login:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-surface);
+    border-color: var(--color-primary-dark);
+    transform: scale(1.05);
+}
